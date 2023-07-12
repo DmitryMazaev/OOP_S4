@@ -1,6 +1,7 @@
 package Services;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import Domen.PersonComparator;
@@ -28,12 +29,29 @@ public class TeacherService implements iPersonService<Teacher> {
         teachers.add(per);
     }    
 
-    /* public void sortByFIOStdLst()
+    public void getAllTeacher(List<Teacher> teachers)
     {
-       // List<Student> newStudentList = new ArrayList<Student>(students);
-        teachers.sort(new PersonComparator<Teacher>());
-        //return newStudentList;
-    } */
+        PersonComparator<Teacher> comT2 = new PersonComparator<Teacher>();
 
+        for (int i = 0; i < teachers.size(); i++) 
+        {
+            for (int j = 0; j < teachers.size(); j++) 
+            {
+                if (i != j)
+                {
+                    comT2.compare(teachers.get(i), teachers.get(j));
+                    System.out.println(comT2.compare(teachers.get(i), teachers.get(j))); //Почему выводит 8 и -8?
+                }
+                
+            }
+        }
+
+        Collections.sort(teachers);
+
+        for (Teacher teacher : teachers) 
+        {
+            System.out.println(teacher);
+        }
+    }
 
 }

@@ -10,6 +10,7 @@ import Domen.PersonComparator;
 import Domen.Student;
 import Domen.StudentGroup;
 import Domen.Teacher;
+import Services.TeacherService;
 
 public class App {
     public static <T> void main(String[] args) throws Exception {
@@ -35,28 +36,8 @@ public class App {
             System.out.println(teacher);
         }
 
-        PersonComparator<Teacher> comT2 = new PersonComparator<Teacher>();
-
-        for (int i = 0; i < teacherList.size(); i++) 
-        {
-            for (int j = 0; j < teacherList.size(); j++) 
-            {
-                if (i != j)
-                {
-                    comT2.compare(teacherList.get(i), teacherList.get(j));
-                    System.out.println(comT2.compare(teacherList.get(i), teacherList.get(j))); //Почему выводит 8 и -8?
-                }
-                
-            }
-        }
-        //Collections.sort(teacherList); ////Вопрос!
-
-
-        System.out.println("=====================");
-        for (Teacher teacher : teacherList) 
-        {
-            System.out.println(teacher);
-        }
+        TeacherService teacherService = new TeacherService();
+        teacherService.getAllTeacher(teacherList);
 
         PersonComparator<Teacher> comT = new PersonComparator<Teacher>();
         comT.compare(t1, t2);
