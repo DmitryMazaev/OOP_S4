@@ -1,8 +1,8 @@
 package Services;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-
 import Domen.PersonComparator;
 import Domen.Student;
 
@@ -21,17 +21,23 @@ public class StudentService implements iPersonService<Student> {
 
     @Override
     public void create(String firstName, int age) {
-        Student per = new Student(firstName,age,count);
+        Student per = new Student(firstName, age, count);
         count++;
         students.add(per);
-    }    
-
-    public void sortByFIOStdLst()
-    {
-       // List<Student> newStudentList = new ArrayList<Student>(students);
-        students.sort( new PersonComparator<Student>());
-        //return newStudentList;
     }
 
+    public void sortByFIOStdLst() {
+        // List<Student> newStudentList = new ArrayList<Student>(students);
+        students.sort(new PersonComparator<Student>());
+        // return newStudentList;
+    }
+
+    public void getAllStudent(List<Student> students) {
+        Collections.sort(students);
+
+        for (Student student : students) {
+            System.out.println(student);
+        }
+    }
 
 }
